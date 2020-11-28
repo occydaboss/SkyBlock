@@ -7,12 +7,12 @@ Simply drag and drop the plugin file into your plugins folder!
 
 ## Dependencies
 
-This plugin requires [FAWE](https://dev.bukkit.org/projects/fawe) and [WorldEdit](https://dev.bukkit.org/projects/worldedit).
+This plugin requires [FAWE](https://dev.bukkit.org/projects/fawe).
 
 ## Configuration
 
 The defaults for the plugin can be found [here](https://pastebin.com/m7SkXtpb).
-If you want to use your own island schematic make sure the copy location of the schematic is at the exact place you want your players to spawn at. The default paste location of the schematic is 0,64,0, so if you want to change that please make sure the location follows the exact same format (i.e. x,y,z)
+If you want to use your own island schematic make sure the copy location of the schematic is at the exact place you want your players to spawn at. Please make sure the location follows the format x,y,z.
 
 
 ## Contributing
