@@ -45,11 +45,11 @@ public class SkyBlock extends JavaPlugin
             saveResource("config.yml", false);
         }
 
-        schem = new File(getDataFolder(), "island.schematic");
+        schem = new File(getDataFolder(), "island.schem");
 
         if (!schem.exists())
         {
-            saveResource("island.schematic", false);
+            saveResource("island.schem", false);
         }
 
         config = new YamlConfiguration();

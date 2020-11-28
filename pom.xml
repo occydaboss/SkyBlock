@@ -37,6 +37,7 @@
             <groupId>com.intellectualsites.fawe</groupId>
             <artifactId>FAWE-Bukkit</artifactId>
             <version>1.16-434</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

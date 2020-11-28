@@ -37,7 +37,8 @@ public class IslandExecutor implements CommandExecutor
 
     private void generate (File file, BlockVector3 location, int x, int y, int z, long time, boolean rain, Player player)
     {
-        player.sendMessage(addPrefix("Creating World..."));
+        player.sendMessage(addPrefix("Creating Island..."));
+        logger.info("Creating world...");
         WorldCreator wc = new WorldCreator(player.getUniqueId().toString());
         wc.generator(new EmptyChunkGenerator());
         World world = wc.createWorld();
@@ -45,6 +46,7 @@ public class IslandExecutor implements CommandExecutor
         try {
             world.getChunkAt(new Location(world, 0, 64, 0)).load();
             if (world.getChunkAt(new Location(world, 0, 64, 0)).isLoaded()) {
+                logger.info("Pasting schematic...");
                 EditSession editSession = ClipboardFormats.findByFile(file).load(file).paste(BukkitAdapter.adapt(world), location);
             }
         } catch (IOException e) {
@@ -53,6 +55,7 @@ public class IslandExecutor implements CommandExecutor
 
         world.setTime(time);
 
+        logger.info("Setting weather...");
         if (rain == false)
         {
             world.setStorm(false);
@@ -62,6 +65,7 @@ public class IslandExecutor implements CommandExecutor
             world.setStorm(true);
         }
 
+        logger.info("Setting chest...");
         Block block = world.getBlockAt(x, y, z);
         block.setType(Material.CHEST);
 
@@ -74,9 +78,10 @@ public class IslandExecutor implements CommandExecutor
                 new ItemStack(Material.AIR), new ItemStack(Material.AIR), new ItemStack(Material.AIR), new ItemStack(Material.LEATHER_CHESTPLATE), new ItemStack(Material.POTATO, 8), new ItemStack(Material.LEATHER_BOOTS), new ItemStack(Material.AIR), new ItemStack(Material.AIR), new ItemStack(Material.AIR)
         };
 
-
+        logger.info("Adding inventory...");
         inventory.setContents(items);
 
+        player.sendMessage(addPrefix("Done! Teleporting..."));
         player.teleport(new Location(world, location.getX(), location.getY(), location.getZ()));
     }
 
@@ -151,6 +156,7 @@ public class IslandExecutor implements CommandExecutor
         try
         {
             location = BlockVector3.at(Double.parseDouble(locSplit[0]), Double.parseDouble(locSplit[1]), Double.parseDouble(locSplit[2]));
+            logger.info(locString);
         }
         catch (NumberFormatException e)
         {
