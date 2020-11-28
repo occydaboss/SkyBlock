@@ -1,0 +1,13 @@
+# This is the config file for SkyBlock
+# You can find the default config and more info at https://github.com/occydaboss/SkyBlock.
+
+usePrefix: true
+prefix: "[SkyBlock]"
+
+useDefaultSchematic: true
+schemPath: ""
+schemLoc: 0,64,0
+chestLoc: 0,64,3
+
+raining: false
+time: 6000

@@ -1,0 +1,11 @@
+main: com.occydaboss.skyblock.SkyBlock
+name: SkyBlock
+version: 0.1b
+depend: [FastAsyncWorldEdit]
+author: OccyDaBoss
+description: Hypixel SkyBlockn't
+
+commands:
+  is:
+    usage: /<command>
+    description: Generates a SkyBlock island.
