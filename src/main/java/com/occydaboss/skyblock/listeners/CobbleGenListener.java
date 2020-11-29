@@ -2,9 +2,7 @@ package com.occydaboss.skyblock.listeners;
 
 import com.occydaboss.skyblock.SkyBlock;
 import com.occydaboss.skyblock.util.Level;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
@@ -31,7 +29,20 @@ public class CobbleGenListener implements Listener
 
                     Player player = Bukkit.getPlayer(UUID.fromString(b.getWorld().getName()));
 
-                    player.playSound(b.getLocation(), Sound.BLOCK_LAVA_EXTINGUISH, 1f, 1f);
+                    player.playSound(b.getLocation(), Sound.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1f, 1f);
+
+                    for (int counter = 0; counter < 8; ++counter)
+                    {
+                        b.getWorld().spawnParticle(Particle.SMOKE_LARGE,
+                                b.getX() + Math.random(),
+                                b.getY() + 1 + Math.random(),
+                                b.getZ() + Math.random(),
+                                1,
+                                0,
+                                0,
+                                0,
+                                0);
+                    }
 
                     if (Level.getPlayerLevel(player) == 0)
                     {

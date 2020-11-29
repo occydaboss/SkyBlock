@@ -16,3 +16,6 @@ commands:
   shop:
     usage: /<command>
     description: Opens the shop menu.
+  setlevel:
+    usage: /<command> player level
+    description: Sets a player's level.

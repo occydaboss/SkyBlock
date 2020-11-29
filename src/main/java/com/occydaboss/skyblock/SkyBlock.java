@@ -2,6 +2,7 @@ package com.occydaboss.skyblock;
 
 import com.occydaboss.skyblock.executors.IslandExecutor;
 import com.occydaboss.skyblock.executors.LevelUpExecutor;
+import com.occydaboss.skyblock.executors.SetLevelExecutor;
 import com.occydaboss.skyblock.executors.ShopExecutor;
 import com.occydaboss.skyblock.listeners.CobbleGenListener;
 import com.occydaboss.skyblock.listeners.InventoryClickListener;
@@ -62,6 +63,7 @@ public class SkyBlock extends JavaPlugin
         this.getCommand("is").setExecutor(new IslandExecutor());
         this.getCommand("levelup").setExecutor(new LevelUpExecutor());
         this.getCommand("shop").setExecutor(new ShopExecutor());
+        this.getCommand("setlevel").setExecutor(new SetLevelExecutor());
 
         // Listeners
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
