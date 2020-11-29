@@ -7,7 +7,7 @@ Simply drag and drop the plugin file into your plugins folder!
 
 ## Dependencies
 
-This plugin requires [FAWE](https://dev.bukkit.org/projects/fawe).
+This plugin requires [FAWE](https://www.spigotmc.org/resources/fast-async-worldedit.13932/).
 
 ## Configuration
 
