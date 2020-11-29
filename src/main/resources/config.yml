@@ -8,6 +8,7 @@ useDefaultSchematic: true
 schemPath: ""
 schemLoc: 0,64,0
 chestLoc: 0,64,3
+borderRadius: 100
 
 raining: false
 time: 6000

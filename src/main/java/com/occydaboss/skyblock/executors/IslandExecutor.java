@@ -81,12 +81,16 @@ public class IslandExecutor implements CommandExecutor
         logger.info("Adding inventory...");
         inventory.setContents(items);
 
+        logger.info("Adding border...");
+        world.getWorldBorder().setSize(SkyBlock.getPluginConfig().getDouble("borderRadius"));
+
         player.sendMessage(addPrefix("Done! Teleporting..."));
         player.teleport(new Location(world, location.getX(), location.getY(), location.getZ()));
     }
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command cmd, String name, String[] args) {
+    public boolean onCommand (CommandSender commandSender, Command cmd, String name, String[] args)
+    {
         if (!(commandSender instanceof Player))
         {
             commandSender.sendMessage(addPrefix("This command can only be executed by a player!"));
