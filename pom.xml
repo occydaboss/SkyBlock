@@ -6,12 +6,16 @@
 
     <groupId>com.occydaboss</groupId>
     <artifactId>SkyBlock</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
+
+    <build>
+        <directory>Y:\Documents\Maven Builds\SkyBlock</directory>
+    </build>
 
     <repositories>
         <repository>

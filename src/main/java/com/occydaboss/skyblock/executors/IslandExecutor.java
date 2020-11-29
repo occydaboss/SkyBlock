@@ -1,4 +1,4 @@
-package com.occydaboss.skyblock.cmdexec;
+package com.occydaboss.skyblock.executors;
 
 import com.occydaboss.skyblock.SkyBlock;
 import com.occydaboss.skyblock.util.EmptyChunkGenerator;
@@ -183,7 +183,6 @@ public class IslandExecutor implements CommandExecutor
         }
 
         generate(schem, location, cX, cY, cZ, time, rain, player);
-
 
         return true;
     }
