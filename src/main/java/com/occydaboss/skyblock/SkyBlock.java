@@ -3,6 +3,7 @@ package com.occydaboss.skyblock;
 import com.occydaboss.skyblock.executors.IslandExecutor;
 import com.occydaboss.skyblock.executors.LevelUpExecutor;
 import com.occydaboss.skyblock.executors.ShopExecutor;
+import com.occydaboss.skyblock.listeners.CobbleGenListener;
 import com.occydaboss.skyblock.listeners.InventoryClickListener;
 import com.occydaboss.skyblock.listeners.PlayerJoinListener;
 import net.milkbowl.vault.chat.Chat;
@@ -36,7 +37,7 @@ public class SkyBlock extends JavaPlugin
     private static FileConfiguration config;
     private static FileConfiguration levelLog;
 
-    private Logger logger;
+    public static Logger logger;
 
     @Override
     public void onEnable ()
@@ -65,6 +66,7 @@ public class SkyBlock extends JavaPlugin
         // Listeners
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
         getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
+        getServer().getPluginManager().registerEvents(new CobbleGenListener(), this);
     }
 
     @Override

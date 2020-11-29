@@ -20,7 +20,7 @@ public class PlayerJoinListener implements Listener
         Player player = e.getPlayer();
         String id = player.getUniqueId().toString();
 
-        if (!player.hasPlayedBefore())
+        if (!SkyBlock.getLevelLog().contains(String.valueOf(player.getUniqueId())))
         {
             SkyBlock.mainInstance.getServer().broadcastMessage(addPrefix(ChatColor.GOLD + player.getName() + " joined for the first time! Give them a warm welcome!"));
             SkyBlock.getLevelLog().set(id, 0);
