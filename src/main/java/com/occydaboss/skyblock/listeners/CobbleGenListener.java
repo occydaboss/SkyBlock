@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockFromToEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Random;
 import java.util.UUID;
@@ -29,88 +30,98 @@ public class CobbleGenListener implements Listener
 
                     Player player = Bukkit.getPlayer(UUID.fromString(b.getWorld().getName()));
 
-                    player.playSound(b.getLocation(), Sound.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1f, 1f);
+                    BukkitRunnable cobble = new BukkitRunnable() {
+                        @Override
+                        public void run() {
+                            b.getWorld().playSound(b.getLocation(),
+                                    Sound.BLOCK_FIRE_EXTINGUISH,
+                                    SoundCategory.BLOCKS,
+                                    0.5F,
+                                    1);
 
-                    for (int counter = 0; counter < 8; ++counter)
-                    {
-                        b.getWorld().spawnParticle(Particle.SMOKE_LARGE,
-                                b.getX() + Math.random(),
-                                b.getY() + 1 + Math.random(),
-                                b.getZ() + Math.random(),
-                                1,
-                                0,
-                                0,
-                                0,
-                                0);
-                    }
 
-                    if (Level.getPlayerLevel(player) == 0)
-                    {
-                        if (randomChance <= 40) {
-                            b.setType(Material.COBBLESTONE);
-                        } else if (randomChance <= 60) {
-                            b.setType(Material.SANDSTONE);
-                        } else if (randomChance <= 75) {
-                            b.setType(Material.COAL_ORE);
-                        } else if (randomChance <= 85) {
-                            b.setType(Material.IRON_ORE);
-                        } else if (randomChance <= 90) {
-                            b.setType(Material.GOLD_ORE);
-                        } else if (randomChance <= 95) {
-                            b.setType(Material.LAPIS_ORE);
-                        } else if (randomChance <= 97) {
-                            b.setType(Material.REDSTONE_ORE);
-                        } else if (randomChance <= 99) {
-                            b.setType(Material.EMERALD_ORE);
-                        } else if (randomChance <= 100) {
-                            b.setType(Material.DIAMOND_ORE);
-                        }
-                    }
-                    else if (Level.getPlayerLevel(player) == 1) {
-                        if (randomChance <= 30) {
-                            b.setType(Material.COBBLESTONE);
-                        } else if (randomChance <= 50) {
-                            b.setType(Material.SANDSTONE);
-                        } else if (randomChance <= 65) {
-                            b.setType(Material.COAL_ORE);
-                        } else if (randomChance <= 75) {
-                            b.setType(Material.IRON_ORE);
-                        } else if (randomChance <= 85) {
-                            b.setType(Material.GOLD_ORE);
-                        } else if (randomChance <= 90) {
-                            b.setType(Material.LAPIS_ORE);
-                        } else if (randomChance <= 93) {
-                            b.setType(Material.REDSTONE_ORE);
-                        } else if (randomChance <= 97) {
-                            b.setType(Material.EMERALD_ORE);
-                        } else if (randomChance <= 100) {
-                            b.setType(Material.DIAMOND_ORE);
-                        }
-                    }
-                    else if (Level.getPlayerLevel(player) == 2) {
-                        if (randomChance <= 20) {
-                            b.setType(Material.COBBLESTONE);
-                        } else if (randomChance <= 30) {
-                            b.setType(Material.SANDSTONE);
-                        } else if (randomChance <= 40) {
-                            b.setType(Material.RED_SANDSTONE);
-                        } else if (randomChance <= 65) {
-                            b.setType(Material.COAL_ORE);
-                        } else if (randomChance <= 75) {
-                            b.setType(Material.IRON_ORE);
-                        } else if (randomChance <= 85) {
-                            b.setType(Material.GOLD_ORE);
-                        } else if (randomChance <= 90) {
-                            b.setType(Material.LAPIS_ORE);
-                        } else if (randomChance <= 93) {
-                            b.setType(Material.REDSTONE_ORE);
-                        } else if (randomChance <= 97) {
-                            b.setType(Material.EMERALD_ORE);
-                        } else if (randomChance <= 100) {
-                            b.setType(Material.DIAMOND_ORE);
-                        }
-                    }
+                            for (int counter = 0; counter < 8; ++counter)
+                            {
+                                b.getWorld().spawnParticle(Particle.SMOKE_LARGE,
+                                        b.getX() + Math.random(),
+                                        b.getY() + 1 + Math.random(),
+                                        b.getZ() + Math.random(),
+                                        1,
+                                        0,
+                                        0,
+                                        0,
+                                        0);
+                            }
 
+                            if (Level.getPlayerLevel(player) == 0)
+                            {
+                                if (randomChance <= 40) {
+                                    b.setType(Material.COBBLESTONE);
+                                } else if (randomChance <= 60) {
+                                    b.setType(Material.SANDSTONE);
+                                } else if (randomChance <= 75) {
+                                    b.setType(Material.COAL_ORE);
+                                } else if (randomChance <= 85) {
+                                    b.setType(Material.IRON_ORE);
+                                } else if (randomChance <= 90) {
+                                    b.setType(Material.GOLD_ORE);
+                                } else if (randomChance <= 95) {
+                                    b.setType(Material.LAPIS_ORE);
+                                } else if (randomChance <= 97) {
+                                    b.setType(Material.REDSTONE_ORE);
+                                } else if (randomChance <= 99) {
+                                    b.setType(Material.EMERALD_ORE);
+                                } else if (randomChance <= 100) {
+                                    b.setType(Material.DIAMOND_ORE);
+                                }
+                            }
+                            else if (Level.getPlayerLevel(player) == 1) {
+                                if (randomChance <= 30) {
+                                    b.setType(Material.COBBLESTONE);
+                                } else if (randomChance <= 50) {
+                                    b.setType(Material.SANDSTONE);
+                                } else if (randomChance <= 65) {
+                                    b.setType(Material.COAL_ORE);
+                                } else if (randomChance <= 75) {
+                                    b.setType(Material.IRON_ORE);
+                                } else if (randomChance <= 85) {
+                                    b.setType(Material.GOLD_ORE);
+                                } else if (randomChance <= 90) {
+                                    b.setType(Material.LAPIS_ORE);
+                                } else if (randomChance <= 93) {
+                                    b.setType(Material.REDSTONE_ORE);
+                                } else if (randomChance <= 97) {
+                                    b.setType(Material.EMERALD_ORE);
+                                } else if (randomChance <= 100) {
+                                    b.setType(Material.DIAMOND_ORE);
+                                }
+                            }
+                            else if (Level.getPlayerLevel(player) == 2) {
+                                if (randomChance <= 20) {
+                                    b.setType(Material.COBBLESTONE);
+                                } else if (randomChance <= 30) {
+                                    b.setType(Material.SANDSTONE);
+                                } else if (randomChance <= 40) {
+                                    b.setType(Material.RED_SANDSTONE);
+                                } else if (randomChance <= 65) {
+                                    b.setType(Material.COAL_ORE);
+                                } else if (randomChance <= 75) {
+                                    b.setType(Material.IRON_ORE);
+                                } else if (randomChance <= 85) {
+                                    b.setType(Material.GOLD_ORE);
+                                } else if (randomChance <= 90) {
+                                    b.setType(Material.LAPIS_ORE);
+                                } else if (randomChance <= 93) {
+                                    b.setType(Material.REDSTONE_ORE);
+                                } else if (randomChance <= 97) {
+                                    b.setType(Material.EMERALD_ORE);
+                                } else if (randomChance <= 100) {
+                                    b.setType(Material.DIAMOND_ORE);
+                                }
+                            }
+                        }
+                    };
+                    cobble.runTaskLater(SkyBlock.mainInstance, 5);
                 }
             }
         }

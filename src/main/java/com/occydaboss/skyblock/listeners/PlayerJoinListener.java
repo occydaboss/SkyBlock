@@ -39,7 +39,7 @@ public class PlayerJoinListener implements Listener
 
         if (new File(player.getUniqueId().toString()).exists())
         {
-            SkyBlock.mainInstance.getServer().createWorld(new WorldCreator(player.getUniqueId().toString()));
+            SkyBlock.mainInstance.getServer().createWorld(new WorldCreator(player.getUniqueId().toString()).generator("VoidGenerator:PLAINS"));
         }
     }
 }

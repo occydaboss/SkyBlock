@@ -50,6 +50,17 @@ public class ShopItems
     public static final ItemStack whiteWool = new ItemBuilder(Material.WHITE_WOOL).setLore(ShopLore.getLore(10f)).build();
     public static final ItemStack ice = new ItemBuilder(Material.ICE).setLore(ShopLore.getLore(15f)).build();
 
+    // Materials
+    public static final ItemStack coal = new ItemBuilder(Material.COAL).setLore(ShopLore.getLore(20f)).build();
+    public static final ItemStack lapis = new ItemBuilder(Material.LAPIS_LAZULI).setLore(ShopLore.getLore(50f)).build();
+    public static final ItemStack redstone = new ItemBuilder(Material.REDSTONE).setLore(ShopLore.getLore(75f)).build();
+    public static final ItemStack ironOre = new ItemBuilder(Material.IRON_ORE).setLore(ShopLore.getLore(100f)).build();
+    public static final ItemStack goldOre = new ItemBuilder(Material.GOLD_ORE).setLore(ShopLore.getLore(150f)).build();
+    public static final ItemStack ironIngot = new ItemBuilder(Material.IRON_INGOT).setLore(ShopLore.getLore(125f)).build();
+    public static final ItemStack goldIngot = new ItemBuilder(Material.GOLD_INGOT).setLore(ShopLore.getLore(175f)).build();
+    public static final ItemStack emerald = new ItemBuilder(Material.EMERALD).setLore(ShopLore.getLore(200f)).build();
+    public static final ItemStack diamond = new ItemBuilder(Material.DIAMOND).setLore(ShopLore.getLore(400f)).build();
+
      /*
     Level 1
      */

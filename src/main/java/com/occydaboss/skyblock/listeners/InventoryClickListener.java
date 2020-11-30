@@ -4,6 +4,7 @@ import com.occydaboss.skyblock.SkyBlock;
 import com.occydaboss.skyblock.guis.BlocksGUI;
 import com.occydaboss.skyblock.guis.BuySellGUI;
 import com.occydaboss.skyblock.guis.MainMenuGUI;
+import com.occydaboss.skyblock.guis.MaterialsGUI;
 import com.occydaboss.skyblock.util.Level;
 import com.occydaboss.skyblock.util.Price;
 import com.occydaboss.skyblock.util.TextCase;
@@ -216,10 +217,8 @@ public class InventoryClickListener implements Listener
                     }
                 } else if (e.getCurrentItem().equals(materialsButton)) {
                     player.closeInventory();
-                    if (Level.getPlayerLevel(player) == 0) {
-                        player.openInventory(BlocksGUI.getLevel0(player));
-                    } else if (Level.getPlayerLevel(player) == 1) {
-                        player.openInventory(BlocksGUI.getLevel1(player));
+                    if (Level.getPlayerLevel(player) <= 1) {
+                        player.openInventory(MaterialsGUI.getLevel0(player));
                     }
                 }
                 if (e.getCurrentItem().equals(farmingButton)) {
@@ -234,7 +233,10 @@ public class InventoryClickListener implements Listener
             }
 
             // Buy/Sell Items
-            if (ChatColor.stripColor(e.getView().getTitle()).equalsIgnoreCase("Blocks")) {
+            if (
+                    ChatColor.stripColor(e.getView().getTitle()).equalsIgnoreCase("Blocks") ||
+                    ChatColor.stripColor(e.getView().getTitle()).equalsIgnoreCase("Materials")
+                    ) {
                 if (e.getClick().isLeftClick()) {
                     float price = Price.getPriceFromShopItem(e.getCurrentItem());
                     ItemMeta meta = e.getCurrentItem().getItemMeta();
