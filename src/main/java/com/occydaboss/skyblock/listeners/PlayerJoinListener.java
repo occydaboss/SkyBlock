@@ -1,12 +1,15 @@
 package com.occydaboss.skyblock.listeners;
 
 import com.occydaboss.skyblock.SkyBlock;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.WorldCreator;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -19,6 +22,7 @@ public class PlayerJoinListener implements Listener
     {
         Player player = e.getPlayer();
         String id = player.getUniqueId().toString();
+        new WorldCreator(id).createWorld();
 
         if (!SkyBlock.getLevelLog().contains(String.valueOf(player.getUniqueId())))
         {
@@ -32,6 +36,11 @@ public class PlayerJoinListener implements Listener
             {
                 ioException.printStackTrace();
             }
+        }
+
+        if (new File(player.getUniqueId().toString()).exists())
+        {
+
         }
     }
 }

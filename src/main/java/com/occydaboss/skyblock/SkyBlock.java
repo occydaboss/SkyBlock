@@ -34,9 +34,11 @@ public class SkyBlock extends JavaPlugin
 
     private static File schem;
     private static File levelLogF;
+    private static File isDeleteF;
 
     private static FileConfiguration config;
     private static FileConfiguration levelLog;
+    private static FileConfiguration isDelete;
 
     public static Logger logger;
 
@@ -125,6 +127,29 @@ public class SkyBlock extends JavaPlugin
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
+
+        isDeleteF = new File(getDataFolder(), "isdelete.yml");
+        if (!isDeleteF.exists())
+        {
+            isDeleteF.getParentFile().mkdirs();
+            try
+            {
+                isDeleteF.createNewFile();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+        isDelete = new YamlConfiguration();
+
+        try
+        {
+            isDelete.load(isDeleteF);
+        } catch (IOException | InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
     }
 
     private boolean setupPermissions()
@@ -164,10 +189,18 @@ public class SkyBlock extends JavaPlugin
     {
         return levelLog;
     }
+    public static FileConfiguration getIsDelete ()
+    {
+        return isDelete;
+    }
 
     public static File getLevelLogF ()
     {
         return levelLogF;
+    }
+    public static File getIsDeleteF ()
+    {
+        return isDeleteF;
     }
     public static File getIslandSchematic ()
     {

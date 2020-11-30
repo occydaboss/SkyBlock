@@ -1,14 +1,14 @@
 main: com.occydaboss.skyblock.SkyBlock
 name: SkyBlock
 version: 0.1b
-depend: [FastAsyncWorldEdit, Vault]
+depend: [FastAsyncWorldEdit, Vault, VoidGenerator]
 author: OccyDaBoss
 api-version: 1.16
 description: Hypixel SkyBlockn't
 
 commands:
   is:
-    usage: /<command>
+    usage: /<command> [create]
     description: Generates a SkyBlock island.
   levelup:
     usage: /<command>
@@ -17,5 +17,5 @@ commands:
     usage: /<command>
     description: Opens the shop menu.
   setlevel:
-    usage: /<command> player level
+    usage: /<command> <player> <level>
     description: Sets a player's level.
