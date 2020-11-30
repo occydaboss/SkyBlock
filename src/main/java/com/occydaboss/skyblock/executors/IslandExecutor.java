@@ -2,6 +2,7 @@ package com.occydaboss.skyblock.executors;
 
 import com.occydaboss.skyblock.SkyBlock;
 import com.occydaboss.skyblock.util.EmptyChunkGenerator;
+import com.occydaboss.skyblock.util.Level;
 import com.sk89q.worldedit.EditSession;
 import com.sk89q.worldedit.bukkit.BukkitAdapter;
 import com.sk89q.worldedit.extent.clipboard.io.ClipboardFormats;
@@ -73,6 +74,11 @@ public class IslandExecutor implements CommandExecutor
 
     private void generate (File file, BlockVector3 location, int x, int y, int z, long time, boolean rain, Player player)
     {
+        player.getInventory().clear();
+        double balance = SkyBlock.economy.getBalance(player);
+        SkyBlock.economy.withdrawPlayer(player, balance);
+        Level.setPlayerLevel(player, 0);
+
         player.sendMessage(addPrefix("Creating Island..."));
         logger.info("Creating world...");
         WorldCreator wc = new WorldCreator(player.getUniqueId().toString());
@@ -270,7 +276,7 @@ public class IslandExecutor implements CommandExecutor
                     {
                         e.printStackTrace();
                     }
-                    player.sendMessage(addPrefix("Are you sure you want to reset your island? Confirm using /is confirm in the next 30 seconds."));
+                    player.sendMessage(addPrefix(ChatColor.YELLOW + "Are you sure you want to reset your island? This will reset all your progress and clear your inventory. Confirm using /is confirm in the next 30 seconds."));
 
                     BukkitRunnable runnable = new BukkitRunnable() {
                         @Override

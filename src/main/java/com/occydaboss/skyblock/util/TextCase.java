@@ -1,12 +1,33 @@
 package com.occydaboss.skyblock.util;
 
+import java.util.Locale;
+
 public class TextCase
 {
-    public static String setCase (String str)
+    public static String setCase (String message)
     {
-        String firstLetter = str.substring(0, 1);
-        String remainingLetters = str.substring(1, str.length()).toLowerCase();
+        // stores each characters to a char array
+        char[] charArray = message.toLowerCase().toCharArray();
+        boolean foundSpace = true;
 
-        return firstLetter + remainingLetters;
+        for(int i = 0; i < charArray.length; i++) {
+
+            // if the array element is a letter
+            if (Character.isLetter(charArray[i])) {
+
+                // check space is present before the letter
+                if (foundSpace) {
+
+                    // change the letter into uppercase
+                    charArray[i] = Character.toUpperCase(charArray[i]);
+                    foundSpace = false;
+                }
+            } else {
+                // if the new character is not character
+                foundSpace = true;
+            }
+        }
+
+        return String.valueOf(charArray);
     }
 }

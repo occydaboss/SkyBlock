@@ -9,6 +9,7 @@ schemPath: ""
 schemLoc: 0,64,0
 chestLoc: 0,64,3
 borderRadius: 100
-
 raining: false
 time: 6000
+# Make sure this is a proper bukkit biome.
+biome: PLAINS

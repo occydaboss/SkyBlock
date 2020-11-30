@@ -24,4 +24,17 @@ public class BuySellGUI
         i.setContents(items);
         return i;
     }
+
+    public static Inventory getSellMenu (Player player, ItemStack item, float price)
+    {
+        Inventory i = Bukkit.createInventory(player, 27, ChatColor.GOLD.toString() + ChatColor.BOLD + "Sell Menu");
+        ItemStack display = new ItemBuilder(Material.YELLOW_STAINED_GLASS_PANE).setDisplayName(ChatColor.GOLD + "$" + String.valueOf(price)).build();
+        ItemStack[] items = {
+                rem1, filler, filler, filler, filler, filler, filler, filler, add1,
+                rem10, filler, filler, filler, item, filler, filler, filler, add10,
+                set1, filler, cancel, filler, display, filler, confirm, filler, set64
+        };
+        i.setContents(items);
+        return i;
+    }
 }

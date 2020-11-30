@@ -22,7 +22,6 @@ public class PlayerJoinListener implements Listener
     {
         Player player = e.getPlayer();
         String id = player.getUniqueId().toString();
-        new WorldCreator(id).createWorld();
 
         if (!SkyBlock.getLevelLog().contains(String.valueOf(player.getUniqueId())))
         {
@@ -40,7 +39,7 @@ public class PlayerJoinListener implements Listener
 
         if (new File(player.getUniqueId().toString()).exists())
         {
-
+            SkyBlock.mainInstance.getServer().createWorld(new WorldCreator(player.getUniqueId().toString()));
         }
     }
 }
