@@ -10,7 +10,7 @@ commands:
   is:
     usage: /<command> [create]
     description: Generates a SkyBlock island.
-  levelup:
+  forcelevelup:
     usage: /<command>
     description: Levels up the player.
   shop:
@@ -19,3 +19,6 @@ commands:
   setlevel:
     usage: /<command> <player> <level>
     description: Sets a player's level.
+  levelup:
+    usage: /<command>
+    description: Opens level GUI.

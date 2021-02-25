@@ -28,14 +28,12 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <filters>
-                                <filter>
-                                    <artifact>commons-io:commons-io</artifact>
-                                    <includes>
-                                        <include>**</include>
-                                    </includes>
-                                </filter>
-                            </filters>
+                            <relocations>
+                                <relocation>
+                                    <pattern>commons-io:commons-io</pattern>
+                                    <shadedPattern>com.occydaboss.commons-io</shadedPattern>
+                                </relocation>
+                            </relocations>
                         </configuration>
                     </execution>
                 </executions>
@@ -64,14 +62,14 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.16.4-R0.1-SNAPSHOT</version>
+            <version>1.16.5-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>com.intellectualsites.fawe</groupId>
             <artifactId>FAWE-Bukkit</artifactId>
-            <version>1.16-434</version>
+            <version>1.16-583</version>
             <scope>provided</scope>
         </dependency>
 

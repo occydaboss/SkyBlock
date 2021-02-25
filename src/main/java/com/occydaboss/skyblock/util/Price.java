@@ -20,5 +20,4 @@ public class Price
 
         return Float.parseFloat(line.split("\\$")[1]);
     }
-
 }

@@ -77,7 +77,14 @@ public class IslandExecutor implements CommandExecutor
         player.getInventory().clear();
         double balance = SkyBlock.economy.getBalance(player);
         SkyBlock.economy.withdrawPlayer(player, balance);
+        player.setHealth(20);
+        player.setFoodLevel(20);
+        player.setLevel(0);
+        player.setExp(0);
         Level.setPlayerLevel(player, 0);
+        Level.setSubLevel(player, 0, "mining");
+        Level.setSubLevel(player, 0, "farming");
+        Level.setSubLevel(player, 0, "combat");
 
         player.sendMessage(addPrefix("Creating Island..."));
         logger.info("Creating world...");

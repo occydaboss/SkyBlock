@@ -1,6 +1,7 @@
 package com.occydaboss.skyblock.util;
 
 import com.occydaboss.skyblock.SkyBlock;
+import org.bukkit.ChatColor;
 
 public class AddPrefix
 {
@@ -9,7 +10,7 @@ public class AddPrefix
         if (SkyBlock.getPluginConfig().getBoolean("usePrefix"))
         {
             String prefix = SkyBlock.getPluginConfig().getString("prefix");
-            return prefix + " " + str;
+            return prefix + " " + ChatColor.YELLOW + str;
         }
         else
         {

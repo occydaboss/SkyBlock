@@ -1,25 +1,32 @@
 package com.occydaboss.skyblock;
 
-import com.occydaboss.skyblock.executors.IslandExecutor;
-import com.occydaboss.skyblock.executors.LevelUpExecutor;
-import com.occydaboss.skyblock.executors.SetLevelExecutor;
-import com.occydaboss.skyblock.executors.ShopExecutor;
-import com.occydaboss.skyblock.listeners.CobbleGenListener;
-import com.occydaboss.skyblock.listeners.InventoryClickListener;
-import com.occydaboss.skyblock.listeners.PlayerJoinListener;
+import com.occydaboss.skyblock.entities.BobBoss;
+import com.occydaboss.skyblock.executors.*;
+import com.occydaboss.skyblock.listeners.*;
+import com.occydaboss.skyblock.recipes.Recipes;
+import com.occydaboss.skyblock.util.Level;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Statistic;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 import java.util.logging.Logger;
 
 import static com.occydaboss.skyblock.util.AddPrefix.addPrefix;
@@ -61,16 +68,35 @@ public class SkyBlock extends JavaPlugin
             return;
         }
 
+        // Recipes
+        getServer().addRecipe(Recipes.enchDiamondRecipe());
+        getServer().addRecipe(Recipes.enchFleshRecipe());
+        getServer().addRecipe(Recipes.bobSwordRecipe());
+        getServer().addRecipe(Recipes.bobAxeRecipe1());
+        getServer().addRecipe(Recipes.bobAxeRecipe2());
+        getServer().addRecipe(Recipes.bobHelmetRecipe_1());
+        getServer().addRecipe(Recipes.bobHelmetRecipe_2());
+        getServer().addRecipe(Recipes.bobBootsRecipe_1());
+        getServer().addRecipe(Recipes.bobBootsRecipe_2());
+        getServer().addRecipe(Recipes.bobChestplateRecipe());
+        getServer().addRecipe(Recipes.bobLeggingsRecipe());
+
         // Command Executors
         this.getCommand("is").setExecutor(new IslandExecutor());
-        this.getCommand("levelup").setExecutor(new LevelUpExecutor());
+        this.getCommand("forcelevelup").setExecutor(new ForceLevelUpExecutor());
         this.getCommand("shop").setExecutor(new ShopExecutor());
         this.getCommand("setlevel").setExecutor(new SetLevelExecutor());
+        this.getCommand("levelup").setExecutor(new LevelUpExecutor());
 
         // Listeners
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
         getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
         getServer().getPluginManager().registerEvents(new CobbleGenListener(), this);
+        getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
+        getServer().getPluginManager().registerEvents(new VoidFallListener(), this);
+
+        getServer().getPluginManager().registerEvents(new Recipes(), this);
+        getServer().getPluginManager().registerEvents(new BobBoss(), this);
     }
 
     @Override

@@ -25,7 +25,7 @@ public class MainMenuGUI
         Inventory i = Bukkit.createInventory(player, 18, ChatColor.GOLD.toString() + ChatColor.BOLD + "Main Menu");
         ItemStack[] items = {
                 filler, filler, blocksButton, filler, materialsButton, filler, farmingButton, filler, filler,
-                filler, filler, redstoneButton, filler, miscButton, filler, toolsButton, filler, filler
+                filler, filler, redstoneButton, filler, miscButton, filler, mobDropsButton, filler, filler
         };
         i.setContents(items);
         return i;
